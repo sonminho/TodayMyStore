@@ -1,0 +1,17 @@
+package dao;
+
+import java.sql.Connection;
+
+import db.DBManager;
+
+public class UserDAO {
+	public Connection getConnection() {
+		return DBManager.getConnection();
+	}
+	
+	public int userCheck(String mId, String mPw) {
+		String sql = "SELECT * FROM user WHERE mid = ? and mpw =?";
+		
+		return 0;
+	}
+}

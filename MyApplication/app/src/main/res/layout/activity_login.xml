@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout
+    android:id="@+id/layout_login"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundColor"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:gravity="center_vertical"
+        android:textStyle="normal"
+        android:textColor="#FFF"
+        android:text="오늘 우리 가게는"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_login_id"
+            android:drawableLeft="@drawable/img_user"
+            android:hint="아이디"
+            android:inputType="text"
+            android:textColor="#fff"
+            android:lines="1"
+            android:maxLength="16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"/>
+        <EditText
+            android:id="@+id/et_login_password"
+            android:drawableLeft="@drawable/img_lock"
+            android:hint="비밀번호"
+            android:inputType="textPassword"
+            android:textColor="#fff"
+            android:lines="1"
+            android:maxLength="16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="40dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/rounded"
+            android:textColor="@color/backgroundColor"
+            android:text="로그인"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_join"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/rounded2"
+            android:textColor="#FFF"
+            android:text="가입하기"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="40dp"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</android.widget.LinearLayout>

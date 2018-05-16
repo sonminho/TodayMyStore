@@ -1,0 +1,15 @@
+
+public class User {
+	public String email;
+	public String fullname;
+	
+	public User(String email, String fullname) {
+		this.email = email;
+		this.fullname = fullname;
+	}
+	
+	@Override
+	public String toString() {
+		return "User [email=" + email + ", fullname=" + fullname + "]";
+	}
+}

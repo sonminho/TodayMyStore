@@ -1,0 +1,14 @@
+package Controller;
+
+public class ActionFactory {
+	// 싱글턴 디자인
+	private static ActionFactory instance = new ActionFactory();
+	
+	ActionFactory() {
+		super();
+	}
+	
+	public static ActionFactory getInstance() {
+		return instance;
+	}
+}

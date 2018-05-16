@@ -1,0 +1,31 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import db.DBManager;
+
+public class UserDAO {
+	
+	// 사용자 계정이 있는지 확인
+	public int userCheck(String mId, String mPw) {
+		int result = -1;
+		String sql = "SELECT * FROM user WHERE mid = ? and mpw =?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mId);
+			pstmt.setString(2, mPw);
+			
+			result = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+}

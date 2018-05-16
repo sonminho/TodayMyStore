@@ -1,0 +1,13 @@
+
+public class User {
+	public String email;
+	public String fullname;
+	
+	public User(String email, String fullname) {
+		super();
+		this.email = email;
+		this.fullname = fullname;
+	}
+	
+	
+}

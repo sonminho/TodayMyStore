@@ -1,0 +1,16 @@
+import com.google.gson.Gson;
+
+public class ToJsonSample {
+	public static void main(String[] args) {
+		Gson gson = new Gson();
+		
+		User user1 = new User("jeff@gmail.com", "Jeff");
+		
+		Post newPost = new Post(user1, "postTitle", "postContent");
+		Comment comments = new Comment("comment_author", "comment_author");
+		newPost.comments.add(comments);
+		newPost.comments.add(comments);
+		
+		System.out.println("댓글을 포함한 새 글 : " + gson.toJson(newPost));
+	}
+}

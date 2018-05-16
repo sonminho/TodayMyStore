@@ -1,0 +1,12 @@
+import com.google.gson.Gson;
+
+public class ToJsonSample {
+	public static void main(String[] args) {
+		Gson gson = new Gson();
+		
+		User user1 = new User("jeff@gmail.com", "Jeff");
+		
+		Post newPost = new Post(user1, "postTitle", "postContent");
+		
+	}
+}

@@ -1,0 +1,19 @@
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.Gson;
+
+public class ToJsonSample {
+	public static void main(String[] args) {
+		Gson gson = new Gson();
+		
+		User user1 = new User("bob@jmail.com", null);
+		User user2 = new User("jeff@jmail.com", null);
+		
+		List<User> userList = new ArrayList<User>();
+		userList.add(user1);
+		userList.add(user2);
+		
+		System.out.println(gson.toJson(user1));
+	}
+}

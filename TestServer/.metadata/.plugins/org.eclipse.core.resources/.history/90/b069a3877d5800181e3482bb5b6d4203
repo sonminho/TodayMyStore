@@ -1,0 +1,8 @@
+import db.DBManager;
+
+public class Test {
+	public static void main(String[] args) {
+		DBManager.getConnection();
+		
+	}
+}

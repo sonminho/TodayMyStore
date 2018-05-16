@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/backgroundColor"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <LinearLayout
         android:layout_margin="28dp"
@@ -26,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
+                    android:id="@+id/et_join_id"
                     android:hint="아이디"
                     android:maxLength="16"
                     android:lines="1"
@@ -35,6 +36,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
                 <Button
+                    android:id="@+id/btn_idCheck"
                     android:text="중복확인"
                     android:textColor="@color/backgroundColor"
                     android:background="@drawable/rounded"
@@ -44,6 +46,7 @@
             </LinearLayout>
 
             <EditText
+                android:id="@+id/et_join_pw"
                 android:hint="비밀번호"
                 android:maxLength="16"
                 android:lines="1"
@@ -54,6 +57,7 @@
                 android:layout_height="wrap_content" />
 
             <EditText
+                android:id="@+id/et_join_pw_check"
                 android:hint="비밀번호 확인"
                 android:maxLength="16"
                 android:lines="1"
@@ -64,6 +68,7 @@
                 android:layout_height="wrap_content" />
 
             <EditText
+                android:id="@+id/et_join_name"
                 android:hint="점포명"
                 android:maxLength="20"
                 android:lines="1"
@@ -73,6 +78,7 @@
                 android:layout_height="wrap_content" />
 
             <EditText
+                android:id="@+id/et_join_email"
                 android:hint="이메일"
                 android:maxLength="30"
                 android:lines="1"
@@ -83,6 +89,7 @@
                 android:layout_height="wrap_content" />
 
             <EditText
+                android:id="@+id/et_join_phone"
                 android:hint="전화번호"
                 android:maxLength="11"
                 android:lines="1"
@@ -99,6 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
+                android:id="@+id/btn_join"
                 android:text="등록"
                 android:textColor="@color/backgroundColor"
                 android:layout_weight="0.5"
@@ -108,6 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <Button
+                android:id="@+id/btn_cancel"
                 android:text="취소"
                 android:layout_weight="0.5"
                 android:background="@drawable/rounded2"

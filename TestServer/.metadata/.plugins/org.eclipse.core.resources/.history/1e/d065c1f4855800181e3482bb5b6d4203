@@ -1,0 +1,32 @@
+package controller;
+
+import action.Action;
+import action.AndroidIdCheck;
+import action.AndroidLogin;
+
+public class ActionFactory {
+	// 싱글턴 디자인
+	private static ActionFactory instance = new ActionFactory();
+	
+	ActionFactory() {
+		super();
+	}
+	
+	public static ActionFactory getInstance() {
+		return instance;
+	}
+	
+	public Action getAction(String command) {
+		Action action = null;
+		
+		System.out.println("ActionFactory : " + command);
+		
+		if(command.equals("android_login")) {
+			action = new AndroidLogin();
+		} else if(command.equals("android_IdCheck")) {
+			action = new AndroidIdCheck();
+		}
+		
+		return action;
+	}
+}

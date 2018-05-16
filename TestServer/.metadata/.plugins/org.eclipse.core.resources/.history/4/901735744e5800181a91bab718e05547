@@ -1,0 +1,12 @@
+package dao;
+
+import java.sql.Connection;
+
+import db.DBManager;
+
+public class UserDAO {
+	public Connection getConnection() {
+		return DBManager.getConnection();
+	}
+	
+}

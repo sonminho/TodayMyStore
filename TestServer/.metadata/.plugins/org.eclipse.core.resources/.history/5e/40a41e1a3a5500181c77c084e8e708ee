@@ -1,0 +1,6 @@
+package action;
+
+
+public class AdnroidLogin implements action{
+	
+}

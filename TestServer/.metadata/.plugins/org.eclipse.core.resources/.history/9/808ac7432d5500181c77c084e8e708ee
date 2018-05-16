@@ -1,0 +1,9 @@
+package Dto;
+
+public class UserDTO {
+	private String mId;
+	private String mPw;
+	private String mName;
+	private String mEmail;
+	private String mPhone;
+}

@@ -1,0 +1,23 @@
+package db;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBManager {
+	public static Connection getConnection() {
+		Connection conn = null;
+		
+		try {
+			String dbURL = "jdbc:mysql://localhost:3306/";
+			String dbId = "";
+			String dbPw = "";
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(dbURL, dbId, dbPw);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return conn;
+	}
+	
+}

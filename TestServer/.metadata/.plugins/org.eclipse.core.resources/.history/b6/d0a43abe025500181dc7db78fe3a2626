@@ -1,0 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.Gson;
+
+public class ToJsonSample {
+	public static void main(String[] args) {
+		Gson gson = new Gson();
+		
+		String str = gson.fromJson("\"hello\"", String.class);
+		System.out.println("String : " + str);
+	}
+}
