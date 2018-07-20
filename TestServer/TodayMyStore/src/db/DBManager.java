@@ -28,7 +28,7 @@ public class DBManager {
 	}
 	
 	// 연결 리소스 해제 (Select 후)
-	public static void  close(Connection conn, PreparedStatement pstmt, ResultSet rs){
+	public static void close(Connection conn, PreparedStatement pstmt, ResultSet rs){
 		try {
 			rs.close();
 			pstmt.close();

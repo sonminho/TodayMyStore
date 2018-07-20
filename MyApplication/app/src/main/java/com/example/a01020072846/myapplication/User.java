@@ -11,6 +11,7 @@ public class User {
     public User() {
 
     }
+
     public User(String mId, String mPw, String mName, String mEmail, String mPhone) {
         this.mId = mId;
         this.mPw = mPw;

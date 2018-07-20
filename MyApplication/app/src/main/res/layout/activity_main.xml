@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/backgroundColor"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:padding="40dp">
 
-    <TextView
+    <LinearLayout
+        android:layout_weight="1"
         android:gravity="center"
-        android:text="로그인 완료시 화면"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_height="0dp"
+        android:orientation="horizontal">
+        <Button
+            android:text="매출"
+            android:textSize="20dp"
+            android:textColor="@color/backgroundColor"
+            android:background="@drawable/rounded"
+            android:drawableTop="@drawable/img_sold"
+            android:layout_margin="20dp"
+            android:layout_width="100dp"
+            android:layout_height="140dp" />
+        <Button
+            android:text="My Page"
+            android:textSize="20dp"
+            android:textColor="@color/backgroundColor"
+            android:background="@drawable/rounded"
+            android:drawableTop="@drawable/img_my_page"
+            android:layout_margin="20dp"
+            android:layout_width="100dp"
+            android:layout_height="140dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal">
+        <Button
+            android:text="My Page"
+            android:textSize="20dp"
+            android:textColor="@color/backgroundColor"
+            android:background="@drawable/rounded"
+            android:drawableTop="@drawable/img_my_page"
+            android:layout_margin="20dp"
+            android:layout_width="100dp"
+            android:layout_height="140dp" />
+
+        <Button
+            android:id="@+id/btn_my_page"
+            android:text="My Page"
+            android:textSize="20dp"
+            android:textColor="@color/backgroundColor"
+            android:background="@drawable/rounded"
+            android:drawableTop="@drawable/img_my_page"
+            android:layout_margin="20dp"
+            android:layout_width="100dp"
+            android:layout_height="140dp" />
+    </LinearLayout>
+</LinearLayout>

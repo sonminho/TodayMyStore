@@ -1,0 +1,14 @@
+127.0.0.1 - - [20/Jul/2018:12:16:14 +0900] "GET / HTTP/1.1" 404 1073
+192.168.33.136 - - [20/Jul/2018:12:25:00 +0900] "POST /TodayMyStore/AndroidController?command=android_login HTTP/1.1" 200 1
+192.168.33.136 - - [20/Jul/2018:12:25:16 +0900] "POST /TodayMyStore/AndroidController?command=android_login HTTP/1.1" 200 1
+192.168.33.136 - - [20/Jul/2018:12:25:27 +0900] "POST /TodayMyStore/AndroidController?command=android_user_info HTTP/1.1" 200 69
+192.168.33.136 - - [20/Jul/2018:12:25:31 +0900] "POST /TodayMyStore/AndroidController?command=android_user_info HTTP/1.1" 200 69
+192.168.33.136 - - [20/Jul/2018:12:26:55 +0900] "POST /TodayMyStore/AndroidController?command=android_IdCheck HTTP/1.1" 200 1
+192.168.33.136 - - [20/Jul/2018:12:27:22 +0900] "POST /TodayMyStore/AndroidController?command=android_join HTTP/1.1" 200 1
+192.168.33.136 - - [20/Jul/2018:12:28:06 +0900] "POST /TodayMyStore/AndroidController?command=android_login HTTP/1.1" 200 1
+192.168.33.136 - - [20/Jul/2018:12:28:10 +0900] "POST /TodayMyStore/AndroidController?command=android_login HTTP/1.1" 200 1
+192.168.33.136 - - [20/Jul/2018:12:28:14 +0900] "POST /TodayMyStore/AndroidController?command=android_login HTTP/1.1" 200 1
+192.168.33.136 - - [20/Jul/2018:12:28:23 +0900] "POST /TodayMyStore/AndroidController?command=android_login HTTP/1.1" 200 1
+192.168.33.136 - - [20/Jul/2018:12:28:42 +0900] "POST /TodayMyStore/AndroidController?command=android_login HTTP/1.1" 200 1
+192.168.33.136 - - [20/Jul/2018:12:28:46 +0900] "POST /TodayMyStore/AndroidController?command=android_user_info HTTP/1.1" 200 70
+192.168.33.136 - - [20/Jul/2018:12:29:03 +0900] "POST /TodayMyStore/AndroidController?command=android_info_update HTTP/1.1" 200 1

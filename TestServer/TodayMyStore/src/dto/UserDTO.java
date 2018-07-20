@@ -12,6 +12,10 @@ public class UserDTO {
 		this.mPw = mPw;
 	}
 	
+	public UserDTO() {
+		
+	}
+
 	public String getmId() {
 		return mId;
 	}

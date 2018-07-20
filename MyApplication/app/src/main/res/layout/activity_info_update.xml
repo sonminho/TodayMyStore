@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundColor"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:layout_margin="28dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_weight="0.9"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/et_update_id"
+                    android:hint="아이디"
+                    android:maxLength="16"
+                    android:lines="1"
+                    android:drawableLeft="@drawable/img_user"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_update_pw"
+                android:hint="비밀번호"
+                android:maxLength="16"
+                android:lines="1"
+                android:drawableLeft="@drawable/img_lock"
+                android:inputType="textPassword"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/et_update_pw_check"
+                android:hint="비밀번호 확인"
+                android:maxLength="16"
+                android:lines="1"
+                android:drawableLeft="@drawable/img_lock_confirm"
+                android:inputType="textPassword"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/et_update_name"
+                android:hint="점포명"
+                android:maxLength="20"
+                android:lines="1"
+                android:drawableLeft="@drawable/img_location"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/et_update_email"
+                android:hint="이메일"
+                android:maxLength="30"
+                android:lines="1"
+                android:drawableLeft="@drawable/img_email"
+                android:inputType="textWebEmailAddress"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/et_update_phone"
+                android:hint="전화번호"
+                android:maxLength="11"
+                android:lines="1"
+                android:drawableLeft="@drawable/img_phone"
+                android:inputType="phone"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_update"
+                android:text="수정"
+                android:textColor="@color/backgroundColor"
+                android:layout_weight="0.5"
+                android:background="@drawable/rounded"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_cancel"
+                android:text="취소"
+                android:layout_weight="0.5"
+                android:background="@drawable/rounded2"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+</android.widget.LinearLayout>

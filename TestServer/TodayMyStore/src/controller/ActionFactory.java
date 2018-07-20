@@ -2,8 +2,10 @@ package controller;
 
 import action.Action;
 import action.AndroidIdCheck;
+import action.AndroidInfoUpdate;
 import action.AndroidJoin;
 import action.AndroidLogin;
+import action.AndroidUserInfo;
 
 public class ActionFactory {
 	// 싱글턴 디자인
@@ -28,6 +30,10 @@ public class ActionFactory {
 			action = new AndroidIdCheck();
 		} else if(command.equals("android_join")) {
 			action = new AndroidJoin();
+		} else if(command.equals("android_info_update")) {
+			action = new AndroidInfoUpdate();
+		} else if(command.equals("android_user_info")) {
+			action = new AndroidUserInfo();
 		}
 		
 		return action;

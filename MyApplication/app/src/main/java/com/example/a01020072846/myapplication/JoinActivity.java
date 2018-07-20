@@ -28,6 +28,7 @@ public class JoinActivity extends AppCompatActivity {
     Intent loginIntent;
     ProgressDialog dialog;
     EditText etJoinID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +63,7 @@ public class JoinActivity extends AppCompatActivity {
                     return;
                 }
 
-                new IdCheckAsyncTask().execute("http://192.168.0.102:8080/TodayMyStore/AndroidController?command=android_IdCheck", id);
+                new IdCheckAsyncTask().execute("http://192.168.33.136:8080/TodayMyStore/AndroidController?command=android_IdCheck", id);
             }
         });
 
@@ -82,8 +83,9 @@ public class JoinActivity extends AppCompatActivity {
                     Toast.makeText(JoinActivity.this, "아이디 중복 확인해주세요.", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 // 비밀번호와 비밀번호 확인이 다를 경우
-                if(!pw.equals(pwCheck)){
+                if(!pw.equals(pwCheck)) {
                     Toast.makeText(JoinActivity.this, "비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -106,7 +108,7 @@ public class JoinActivity extends AppCompatActivity {
                     Toast.makeText(JoinActivity.this, "아이디 중복 확인해주세요.", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                new JoinAsyncTask().execute("http://192.168.0.102:8080/TodayMyStore/AndroidController?command=android_join",id,pw,name,email,phone);
+                new JoinAsyncTask().execute("http://192.168.33.136:8080/TodayMyStore/AndroidController?command=android_join",id,pw,name,email,phone);
             }
         });
 
@@ -243,7 +245,7 @@ public class JoinActivity extends AppCompatActivity {
                 Response response = client.newCall(request).execute();
                 result = response.body().string();
 
-            }catch(Exception e) {
+            } catch(Exception e) {
                 e.printStackTrace();
             }
 
@@ -258,7 +260,7 @@ public class JoinActivity extends AppCompatActivity {
                 Toast.makeText(JoinActivity.this, "가입에 성공하셨습니다.", Toast.LENGTH_SHORT).show();
                 startActivity(loginIntent);
             } else {
-                Toast.makeText(JoinActivity.this, "입력을 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "입력을 확인해주세요.", Toast.LENGTH_SHORT).show();
             }
         }
     }

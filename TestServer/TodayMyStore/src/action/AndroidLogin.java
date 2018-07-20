@@ -15,7 +15,6 @@ public class AndroidLogin implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//System.out.println(request.getParameter("user"));
 		
 		Gson gson = new Gson();
 		

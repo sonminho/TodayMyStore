@@ -22,7 +22,6 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-import static java.lang.Thread.sleep;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = LoginActivity.class.getSimpleName();
@@ -65,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 Toast.makeText(LoginActivity.this,  "id : " + id + "\npw : " + pw, Toast.LENGTH_SHORT).show();
 
-                new LoginAsyncTask().execute("http://192.168.0.102:8080/TodayMyStore/AndroidController?command=android_login", id, pw);
+                new LoginAsyncTask().execute("http://192.168.33.136:8080/TodayMyStore/AndroidController?command=android_login", id, pw);
             }
         });
 
@@ -133,7 +132,9 @@ public class LoginActivity extends AppCompatActivity {
 
             if(result.equals("1")){
                 Toast.makeText(LoginActivity.this, id+"님 좋은 하루되세요!", Toast.LENGTH_SHORT).show();
+                loginIntent.putExtra("id", id);
                 startActivity(loginIntent);
+                finish();
             } else if(result.equals("0")) {
                 Toast.makeText(LoginActivity.this, "계정을 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
             }

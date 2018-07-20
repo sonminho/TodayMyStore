@@ -8,6 +8,5 @@
 </head>
 <body>
 인덱스페이지
-
 </body>
 </html>
