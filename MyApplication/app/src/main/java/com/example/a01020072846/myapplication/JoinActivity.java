@@ -59,11 +59,11 @@ public class JoinActivity extends AppCompatActivity {
                 Toast.makeText(JoinActivity.this, id, Toast.LENGTH_SHORT).show();
                 
                 if(id.length() < 5) {
-                    Toast.makeText(JoinActivity.this, "비밀번호는 4자 이상이어야 합니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(JoinActivity.this, "아이디는 4자 이상이어야 합니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                new IdCheckAsyncTask().execute("http://192.168.33.136:8080/TodayMyStore/AndroidController?command=android_IdCheck", id);
+                new IdCheckAsyncTask().execute("http://10.20.31.71:8080/TodayMyStore/AndroidController?command=android_IdCheck", id);
             }
         });
 
@@ -108,7 +108,7 @@ public class JoinActivity extends AppCompatActivity {
                     Toast.makeText(JoinActivity.this, "아이디 중복 확인해주세요.", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                new JoinAsyncTask().execute("http://192.168.33.136:8080/TodayMyStore/AndroidController?command=android_join",id,pw,name,email,phone);
+                new JoinAsyncTask().execute("http://10.20.31.71:8080/TodayMyStore/AndroidController?command=android_join",id,pw,name,email,phone);
             }
         });
 

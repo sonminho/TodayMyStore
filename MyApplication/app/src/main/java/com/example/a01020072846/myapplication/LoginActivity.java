@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 Toast.makeText(LoginActivity.this,  "id : " + id + "\npw : " + pw, Toast.LENGTH_SHORT).show();
 
-                new LoginAsyncTask().execute("http://192.168.33.136:8080/TodayMyStore/AndroidController?command=android_login", id, pw);
+                new LoginAsyncTask().execute("http://10.20.31.71:8080/TodayMyStore/AndroidController?command=android_login", id, pw);
             }
         });
 

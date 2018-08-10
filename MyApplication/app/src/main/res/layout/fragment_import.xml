@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <ListView
+            android:backgroundTint="@color/backgroundColor"
+            android:foregroundTint="@color/backgroundColor"
+            android:choiceMode="singleChoice"
+            android:id="@+id/importList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:background="@color/backgroundColor">
+                <ImageButton
+                    android:id="@+id/plus_btn"
+                    android:src="@drawable/plus"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/backgroundColor"/>
+                <ImageButton
+                    android:id="@+id/minus_btn"
+                    android:src="@drawable/minus"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/backgroundColor" />
+        </LinearLayout>
+</LinearLayout>

@@ -16,7 +16,16 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        Button btnItem = (Button) findViewById(R.id.btn_item);
         Button btnMyPage = (Button) findViewById(R.id.btn_my_page);
+
+        btnMyPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
         btnMyPage.setOnClickListener(new View.OnClickListener() {
             Intent intent = getIntent();
