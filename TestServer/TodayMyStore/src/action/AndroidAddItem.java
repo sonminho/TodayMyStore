@@ -24,7 +24,7 @@ public class AndroidAddItem implements Action{
 		
 		System.out.println(item.getItemType() + " " + item.getItemName() + " " + item.getUnitPrice() + " " + item.getUserId());
 		
-		if(iDao.searchItem(item.getItemName()) == 1) { // 중복된 아이템 값 없음
+		if(iDao.searchItem(item.getItemType(), item.getItemName(), item.getUserId()) == 1) { // 중복된 아이템 값 없음
 			result = iDao.addItem(item.getItemType(), item.getItemName(), item.getUnitPrice(), item.getUserId());
 			
 			if(result > 0) {

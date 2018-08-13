@@ -67,15 +67,17 @@ public class ItemDAO {
 		return result;
 	}
 	
-	public int searchItem(String itemName) {
+	public int searchItem(String itemType, String itemName, String userId) {
 		int result = -1;
 		
-		String sql = "SELECT * FROM ITEMS WHERE ITEM_NAME = ?";
+		String sql = "SELECT * FROM ITEMS WHERE ITEM_TYPE = ? AND ITEM_NAME = ? AND MNAME_ID = ?";
 
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, itemName);
+			pstmt.setString(1, itemType);
+			pstmt.setString(2, itemName);
+			pstmt.setString(3, userId);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -91,4 +93,25 @@ public class ItemDAO {
 		
 		return result;
 	}
+	
+	public int removeItem(String itemType, String itemName, String userId) {
+		int result = -1;
+		
+		String sql = "DELETE FROM ITEMS WHERE ITEM_TYPE = ? AND ITEM_NAME = ? AND MNAME_ID = ?";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);	
+			pstmt.setString(1, itemType);
+			pstmt.setString(2, itemName);
+			pstmt.setString(3, userId);
+			
+			result = pstmt.executeUpdate();
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 }
