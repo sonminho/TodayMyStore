@@ -37,8 +37,8 @@ public class ImportFragment extends Fragment {
     private ItemAdapter adapter;
     Context mContext;
     ListView listView;
-    int count, checked;
-    ArrayList<Item> list;
+    int checked;
+    ArrayList<Item> list, checkedList;
     String userId;
     AddDialog dialog;
     ProgressDialog progressDialog;
@@ -98,13 +98,25 @@ public class ImportFragment extends Fragment {
 
                 int count = adapter.getCount();
 
-                for(int i = count-1; i >= 0; i--) {
+                if(count == 0)
+                    return;
+
+                checkedList = new ArrayList<>();
+
+                for(int i = 0; i < count; i++) {
+                    if(checkedItems.get(i)) {
+                        checkedList.add(list.get(i));
+                    }
+                }
+
+                new ItemRemoveAsyncTask().execute("http://"+ getString(R.string.server_ip) +":8080/TodayMyStore/AndroidController?command=android_remove_item", "import", userId);
+                /*for(int i = count-1; i >= 0; i--) {
                     if(checkedItems.get(i))
                         list.remove(i);
                 }
 
                 listView.clearChoices();
-                adapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();*/
             }
         });
         return rootView;
@@ -136,8 +148,6 @@ public class ImportFragment extends Fragment {
                         return;
                     } else {
                         new ItemAddAsyncTask().execute("http://"+ getString(R.string.server_ip) +":8080/TodayMyStore/AndroidController?command=android_add_item", "import", name, price ,userId);
-                        //adapter.addItem("매입", name, price);
-                        //adapter.notifyDataSetChanged();
                         nameEt.setText("");
                         priceEt.setText("");
                         dismiss();
@@ -202,7 +212,7 @@ public class ImportFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
             list = gson.fromJson(result, new TypeToken<ArrayList<Item>>(){}.getType());
             adapter = new ItemAdapter(getActivity(), list);
             listView.setAdapter(adapter);
@@ -262,12 +272,70 @@ public class ImportFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
+            //.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
             if(result.equals("1")) {
                 new ItemListAsyncTask().execute("http://"+ getString(R.string.server_ip) +":8080/TodayMyStore/AndroidController?command=android_item_list", "import", userId);
                 progressDialog.dismiss();
             } else {
                 Toast.makeText(getActivity(), "중복된 항목명 입니다.", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            }
+        }
+    }
+
+    private class ItemRemoveAsyncTask extends AsyncTask<String, Void, String> {
+        OkHttpClient client = new OkHttpClient();
+        Gson gson = new Gson();
+
+        String URL, itemType, userId;
+        String result;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            URL = strings[0];
+            itemType = strings[1];
+            userId = strings[2];
+
+            Item item = new Item();
+            item.setItemType(itemType);
+            item.setUserId(userId);
+
+            String jsonObject = gson.toJson(checkedList);
+            String jsonObject2 = gson.toJson(item);
+
+            try {
+                RequestBody requestBody = new FormBody.Builder()
+                        .add("list", jsonObject)
+                        .add("item", jsonObject2)
+                        .build();
+
+                Request request = new Request.Builder()
+                        .url(URL)
+                        .post(requestBody)
+                        .build();
+
+                Response response = client.newCall(request).execute();
+                result = response.body().string();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            //Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
+            if (result.equals("1")) {
+                new ItemListAsyncTask().execute("http://" + getString(R.string.server_ip) + ":8080/TodayMyStore/AndroidController?command=android_item_list", "import", userId);
+                progressDialog.dismiss();
+            } else {
                 progressDialog.dismiss();
             }
         }
