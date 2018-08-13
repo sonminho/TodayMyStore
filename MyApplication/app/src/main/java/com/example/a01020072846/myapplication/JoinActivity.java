@@ -63,7 +63,7 @@ public class JoinActivity extends AppCompatActivity {
                     return;
                 }
 
-                new IdCheckAsyncTask().execute("http://10.20.31.71:8080/TodayMyStore/AndroidController?command=android_IdCheck", id);
+                new IdCheckAsyncTask().execute("http://"+ getString(R.string.server_ip) +":8080/TodayMyStore/AndroidController?command=android_IdCheck", id);
             }
         });
 
@@ -108,7 +108,7 @@ public class JoinActivity extends AppCompatActivity {
                     Toast.makeText(JoinActivity.this, "아이디 중복 확인해주세요.", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                new JoinAsyncTask().execute("http://10.20.31.71:8080/TodayMyStore/AndroidController?command=android_join",id,pw,name,email,phone);
+                new JoinAsyncTask().execute("http://"+ getString(R.string.server_ip) +":8080/TodayMyStore/AndroidController?command=android_join",id,pw,name,email,phone);
             }
         });
 

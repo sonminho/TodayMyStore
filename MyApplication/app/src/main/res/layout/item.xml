@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.example.a01020072846.myapplication.CheckableLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    >
+    android:layout_height="64dp"
+    android:orientation="horizontal">
 
     <CheckBox
         android:id="@+id/item_check"
-         android:buttonTint="@color/backgroundColor"
+         android:buttonTint="@color/colorAccent"
          android:layout_width="0dp"
          android:layout_height="match_parent"
+         android:layout_marginLeft="10dp"
+         android:layout_gravity="center"
          android:focusable="false"
          android:clickable="false"
          android:layout_weight="0.2"/>
@@ -17,20 +18,22 @@
     <TextView
         android:text="name"
         android:textColor="@color/backgroundColor"
-        android:textSize="20dp"
+        android:textSize="16dp"
         android:id="@+id/item_name"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
         android:layout_weight="1"
         android:gravity="center"/>
 
     <TextView
         android:text="price"
         android:textColor="@color/backgroundColor"
-        android:textSize="20dp"
+        android:textSize="16dp"
         android:id="@+id/item_price"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
         android:layout_weight="1"
         android:gravity="center"/>
 </com.example.a01020072846.myapplication.CheckableLinearLayout>

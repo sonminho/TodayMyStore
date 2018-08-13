@@ -1,6 +1,7 @@
 package controller;
 
 import action.Action;
+import action.AndroidAddItem;
 import action.AndroidIdCheck;
 import action.AndroidInfoUpdate;
 import action.AndroidItemList;
@@ -37,6 +38,8 @@ public class ActionFactory {
 			action = new AndroidUserInfo();
 		} else if(command.equals("android_item_list")) {
 			action = new AndroidItemList();
+		} else if(command.equals("android_add_item")) {
+			action = new AndroidAddItem();
 		}
 		
 		return action;

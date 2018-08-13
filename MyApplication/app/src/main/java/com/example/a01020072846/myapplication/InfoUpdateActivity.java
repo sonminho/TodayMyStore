@@ -39,7 +39,7 @@ public class InfoUpdateActivity extends AppCompatActivity {
         etUpdateID.setText(intent.getStringExtra("id"));
         etUpdateID.setEnabled(false);
 
-        new UserInfoAsyncTask().execute("http://10.20.31.71:8080/TodayMyStore/AndroidController?command=android_user_info", intent.getStringExtra("id"));
+        new UserInfoAsyncTask().execute("http://"+ getString(R.string.server_ip) +":8080/TodayMyStore/AndroidController?command=android_user_info", intent.getStringExtra("id"));
 
         etUpdatePw  = (EditText)findViewById(R.id.et_update_pw);
         etUpdatePwCheck = (EditText)findViewById(R.id.et_update_pw_check);
@@ -81,7 +81,7 @@ public class InfoUpdateActivity extends AppCompatActivity {
                     return;
                 }
 
-                new UpdateAsyncTask().execute("http://10.20.31.71:8080/TodayMyStore/AndroidController?command=android_info_update", id, pw, name, email, phone);
+                new UpdateAsyncTask().execute("http://"+ getString(R.string.server_ip) +":8080/TodayMyStore/AndroidController?command=android_info_update", id, pw, name, email, phone);
             }
         });
 
