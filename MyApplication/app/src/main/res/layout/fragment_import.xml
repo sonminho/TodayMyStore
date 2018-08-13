@@ -7,18 +7,18 @@
         <ListView
             android:backgroundTint="@color/backgroundColor"
             android:foregroundTint="@color/backgroundColor"
-            android:choiceMode="singleChoice"
+            android:choiceMode="multipleChoice"
             android:id="@+id/importList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"/>
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.5"
-                android:orientation="horizontal"
-                android:background="@color/backgroundColor">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:orientation="horizontal"
+            android:background="@color/backgroundColor">
                 <ImageButton
                     android:id="@+id/plus_btn"
                     android:src="@drawable/plus"

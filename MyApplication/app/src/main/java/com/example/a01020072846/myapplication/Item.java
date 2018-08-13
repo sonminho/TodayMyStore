@@ -5,11 +5,24 @@ public class Item {
     private String itemType;
     private String itemName;
     private String unitPrice;
+    private String userId;
+
+    public Item() {
+
+    }
 
     public Item(String itemType, String itemName, String unitPrice) {
         this.itemType = itemType;
         this.itemName = itemName;
         this.unitPrice = unitPrice;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getItemType() {

@@ -137,7 +137,6 @@ public class UserDAO {
 			pstmt.setString(6, mId);
 			pstmt.setString(7, mId);
 			
-			
 			result = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

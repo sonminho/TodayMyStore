@@ -3,6 +3,7 @@ package controller;
 import action.Action;
 import action.AndroidIdCheck;
 import action.AndroidInfoUpdate;
+import action.AndroidItemList;
 import action.AndroidJoin;
 import action.AndroidLogin;
 import action.AndroidUserInfo;
@@ -34,6 +35,8 @@ public class ActionFactory {
 			action = new AndroidInfoUpdate();
 		} else if(command.equals("android_user_info")) {
 			action = new AndroidUserInfo();
+		} else if(command.equals("android_item_list")) {
+			action = new AndroidItemList();
 		}
 		
 		return action;

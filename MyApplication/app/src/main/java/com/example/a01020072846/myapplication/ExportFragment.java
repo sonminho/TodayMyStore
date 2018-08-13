@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class ExportFragment extends Fragment {
     public ExportFragment(Context context) {
         this.mContext = context;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -46,35 +48,40 @@ public class ExportFragment extends Fragment {
         list.add(new Item("매출", "라면", "3500"));
         list.add(new Item("매출", "라면", "3500"));
 
-        adapter = new ItemAdapter(list);
+        adapter = new ItemAdapter(getActivity(), list);
 
         listView.setDivider(new ColorDrawable(Color.GRAY));
         listView.setDividerHeight(1);
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new ListView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Item item = (Item)(adapter.getItem(position));
-                    String name = item.getItemName();
-                    Toast.makeText(getActivity(), name, Toast.LENGTH_SHORT).show();
-            }
-        });
-
         plusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "Plus", Toast.LENGTH_SHORT).show();        
+                int count = 0 ; count = adapter.getCount() ;
+
+                for (int i=0; i<count; i++) {
+                    listView.setItemChecked(i, true) ;
+                }
+
             }
         });
 
         minusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "Minus", Toast.LENGTH_SHORT).show();
+                SparseBooleanArray checkedItems = listView.getCheckedItemPositions();
+
+                int count = adapter.getCount();
+
+                for(int i = count-1; i >= 0; i--) {
+                    if(checkedItems.get(i))
+                        list.remove(i);
+                }
+
+                listView.clearChoices();
+                adapter.notifyDataSetChanged();
             }
         });
-        
         return rootView;
     }
 

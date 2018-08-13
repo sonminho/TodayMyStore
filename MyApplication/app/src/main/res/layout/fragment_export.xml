@@ -7,7 +7,7 @@
     <ListView
         android:backgroundTint="@color/backgroundColor"
         android:foregroundTint="@color/backgroundColor"
-        android:choiceMode="singleChoice"
+        android:choiceMode="multipleChoice"
         android:id="@+id/exportList"
         android:layout_width="match_parent"
         android:layout_height="0dp"

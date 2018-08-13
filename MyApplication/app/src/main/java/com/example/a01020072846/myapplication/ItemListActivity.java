@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+
 public class ItemListActivity extends AppCompatActivity {
 
     ImportFragment importFragment;
@@ -22,7 +23,7 @@ public class ItemListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list);
 
-        importFragment = new ImportFragment(this);
+        importFragment = new ImportFragment(this, "abcd");
         exportFragment = new ExportFragment(this);
 
         if(savedInstanceState == null) {
@@ -45,6 +46,7 @@ public class ItemListActivity extends AppCompatActivity {
                 exportButton.setBackgroundColor(Color.parseColor("#6475bc"));
                 exportButton.setTextColor(Color.WHITE);
                 getSupportFragmentManager().beginTransaction()
+
                         .replace(R.id.item_container, importFragment)
                         .commit();
             }
@@ -61,11 +63,11 @@ public class ItemListActivity extends AppCompatActivity {
 
                 Toast.makeText(ItemListActivity.this, "매출", Toast.LENGTH_SHORT).show();
                 getSupportFragmentManager().beginTransaction()
+
                         .replace(R.id.item_container, exportFragment)
                         .commit();
             }
         });
 
     }
-
 }

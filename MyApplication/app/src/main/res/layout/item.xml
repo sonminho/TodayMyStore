@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.a01020072846.myapplication.CheckableLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
     >
 
-   <!-- <CheckBox
-        android:buttonTint="@color/backgroundColor"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:focusable="false"
-        android:clickable="true"
-        android:layout_weight="0.2"/>-->
+    <CheckBox
+        android:id="@+id/item_check"
+         android:buttonTint="@color/backgroundColor"
+         android:layout_width="0dp"
+         android:layout_height="match_parent"
+         android:focusable="false"
+         android:clickable="false"
+         android:layout_weight="0.2"/>
+
     <TextView
         android:text="name"
         android:textColor="@color/backgroundColor"
@@ -31,4 +33,4 @@
         android:layout_height="40dp"
         android:layout_weight="1"
         android:gravity="center"/>
-</LinearLayout>
+</com.example.a01020072846.myapplication.CheckableLinearLayout>
