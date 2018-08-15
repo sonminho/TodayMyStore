@@ -13,7 +13,7 @@ public class ItemDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	public ArrayList<ItemDTO> getItemList(String type, String userId) { // 사용자의 매입 또는 매출 리스트 리턴
+	public ArrayList<ItemDTO> getItemList(String type, String userId) {
 		ArrayList<ItemDTO> list = new ArrayList<ItemDTO>();
 		
 		System.out.println("아이템 타입 : " + type + " + 요청 사용자 :" + userId);

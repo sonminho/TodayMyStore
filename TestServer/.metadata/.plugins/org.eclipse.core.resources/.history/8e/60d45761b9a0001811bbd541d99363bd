@@ -67,7 +67,8 @@ public class UserDAO {
 		return result;
 	}
 	
-	public int userIdCheck(String mId) { // 사용자 계정이 존재하는지 확인
+	// 사용자 계정이 존재하는지 확인
+	public int userIdCheck(String mId) {
 		int result = -1;
 		String sql = "SELECT * FROM users WHERE mId = ?";
 
@@ -91,7 +92,8 @@ public class UserDAO {
 		return result;
 	}
 	
-	public int userJoin(String mId, String mPw, String mName, String mEmail, String mPhone) { // 사용자 추가
+	// 사용자 추가
+	public int userJoin(String mId, String mPw, String mName, String mEmail, String mPhone) {
 		int result = -1;
 		String sql = "INSERT INTO USERS (MID, MPW, MNAME, MEMAIL, MPHONE) VALUES (?, ?, ?, ?, ?)";
 		
@@ -114,7 +116,8 @@ public class UserDAO {
 		return result;
 	}
 	
-	public int userUpdate(String mId, String mPw, String mName, String mEmail, String mPhone) { // 사용자 정보 업데이트
+	// 사용자 정보 업데이트
+	public int userUpdate(String mId, String mPw, String mName, String mEmail, String mPhone) {
 		int result = -1;
 		String sql = "UPDATE USERS SET mPw = ?, mName = ?, mEmail = ?, mPhone = ?, UPDATE_DATE = ?, UPDATE_BY = ? WHERE mId = ?";
 		

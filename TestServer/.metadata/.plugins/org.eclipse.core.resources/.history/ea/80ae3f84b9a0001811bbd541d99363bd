@@ -10,7 +10,7 @@ import action.AndroidLogin;
 import action.AndroidRemoveItem;
 import action.AndroidUserInfo;
 
-public class ActionFactory { // 싱글턴 디자인
+public class ActionFactory { 	// 싱글턴 디자인
 
 	private static ActionFactory instance = new ActionFactory();
 	

@@ -19,10 +19,12 @@ public class AndroidItemList implements Action{
 
 		Gson gson = new Gson();
 		
+		//
 		ItemDTO item = gson.fromJson(request.getParameter("item"), ItemDTO.class);
 		
 		ItemDAO iDao = new ItemDAO();
 		ArrayList<ItemDTO> list = iDao.getItemList(item.getItemType(), item.getUserId());
+		//ArrayList<ItemDTO> list = iDao.getItemList(request.getParameter("item_type"), request.getParameter("user_id"));
 		
 		StringBuilder sb = new StringBuilder();
 		
