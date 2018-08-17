@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/tx_item_name"
+        android:text="항목명"
+        android:textColor="@color/backgroundColor"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:gravity="center|left"
+        android:layout_marginLeft="20dp"/>
+
+    <EditText
+        android:id="@+id/tx_item_count"
+        android:text="0"
+        android:background="@color/softBackgraound"
+        android:inputType="number"
+        android:textColor="@color/backgroundColor"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
+        android:gravity="center"/>
+
+</LinearLayout>

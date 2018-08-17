@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,28 +19,57 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnItem = (Button) findViewById(R.id.btn_item);
         Button btnMyPage = (Button) findViewById(R.id.btn_my_page);
+        Button importButton = (Button) findViewById(R.id.btn_import);
+        Button exportButton = (Button) findViewById(R.id.btn_export);
+
+        id = intent.getStringExtra("id");
+        Toast.makeText(this, "사용자 아이디 " + id, Toast.LENGTH_SHORT).show();
 
         btnMyPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-
-        btnMyPage.setOnClickListener(new View.OnClickListener() {
-            Intent intent = getIntent();
             Intent updateIntent = null;
-            String id = null;
 
             @Override
             public void onClick(View v) {
-                id = intent.getStringExtra("id");
                 updateIntent = new Intent(MainActivity.this, InfoUpdateActivity.class);
-
                 updateIntent.putExtra("id", id);
                 Toast.makeText(MainActivity.this, id, Toast.LENGTH_SHORT).show();
                 startActivity(updateIntent);
+            }
+        });
+
+        btnItem.setOnClickListener(new View.OnClickListener() {
+            Intent itemIntent = null;
+
+            @Override
+            public void onClick(View v) {
+                itemIntent = new Intent(MainActivity.this, ItemListActivity.class);
+                itemIntent.putExtra("id", id);
+                Toast.makeText(MainActivity.this, id, Toast.LENGTH_SHORT).show();
+                startActivity(itemIntent);
+            }
+        });
+
+        importButton.setOnClickListener(new View.OnClickListener() {
+            Intent importIntent = null;
+
+            @Override
+            public void onClick(View v) {
+                importIntent = new Intent(MainActivity.this, TransactionImportActivity.class);
+                importIntent.putExtra("id", id);
+                Toast.makeText(MainActivity.this, id, Toast.LENGTH_SHORT).show();
+                startActivity(importIntent);
+            }
+        });
+
+        exportButton.setOnClickListener(new View.OnClickListener() {
+            Intent exportIntent = null;
+
+            @Override
+            public void onClick(View v) {
+                exportIntent = new Intent(MainActivity.this, TransactionExportActivity.class);
+                exportIntent.putExtra("id", id);
+                Toast.makeText(MainActivity.this, id, Toast.LENGTH_SHORT).show();
+                startActivity(exportIntent);
             }
         });
     }

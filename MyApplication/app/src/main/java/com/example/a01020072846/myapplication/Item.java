@@ -6,6 +6,7 @@ public class Item {
     private String itemName;
     private String unitPrice;
     private String userId;
+    private String itemCount;
 
     public Item() {
 
@@ -15,6 +16,14 @@ public class Item {
         this.itemType = itemType;
         this.itemName = itemName;
         this.unitPrice = unitPrice;
+    }
+
+    public String getItemCount() {
+        return itemCount;
+    }
+
+    public void setItemCount(String itemCount) {
+        this.itemCount = itemCount;
     }
 
     public String getUserId() {

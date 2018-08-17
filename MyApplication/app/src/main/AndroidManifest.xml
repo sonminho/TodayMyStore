@@ -12,24 +12,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".LoginActivity">
-
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
         </activity>
         <activity android:name=".JoinActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".InfoUpdateActivity" />
         <activity android:name=".ItemListActivity">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
+        <activity android:name=".TransactionImportActivity" />
+        <activity android:name=".TransactionExportActivity"></activity>
     </application>
 
 </manifest>

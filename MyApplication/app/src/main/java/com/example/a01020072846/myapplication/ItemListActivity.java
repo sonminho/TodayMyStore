@@ -1,6 +1,7 @@
 package com.example.a01020072846.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,13 +19,18 @@ public class ItemListActivity extends AppCompatActivity {
     Button importButton, exportButton;
     ImageButton plusButton, minusButton;
 
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list);
 
-        importFragment = new ImportFragment(this, "abcd");
-        exportFragment = new ExportFragment(this);
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
+
+        Toast.makeText(this, "사용자 아이디는 " + id, Toast.LENGTH_SHORT).show();
+        importFragment = new ImportFragment(this, id);
+        exportFragment = new ExportFragment(this, id);
 
         if(savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -46,7 +52,6 @@ public class ItemListActivity extends AppCompatActivity {
                 exportButton.setBackgroundColor(Color.parseColor("#6475bc"));
                 exportButton.setTextColor(Color.WHITE);
                 getSupportFragmentManager().beginTransaction()
-
                         .replace(R.id.item_container, importFragment)
                         .commit();
             }
@@ -56,14 +61,12 @@ public class ItemListActivity extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
+                Toast.makeText(ItemListActivity.this, "매출", Toast.LENGTH_SHORT).show();
                 exportButton.setBackgroundColor(Color.WHITE);
                 exportButton.setTextColor(Color.parseColor("#6475bc"));
                 importButton.setBackgroundColor(Color.parseColor("#6475bc"));
                 importButton.setTextColor(Color.WHITE);
-
-                Toast.makeText(ItemListActivity.this, "매출", Toast.LENGTH_SHORT).show();
                 getSupportFragmentManager().beginTransaction()
-
                         .replace(R.id.item_container, exportFragment)
                         .commit();
             }
