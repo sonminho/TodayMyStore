@@ -8,11 +8,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.9"
         android:orientation="horizontal"
-        android:background="@color/backgroundColor">
+        android:background="@color/backgroundColor"
+        android:padding="8dp">
 
         <TextView
+            android:id="@+id/tv_date"
             android:textColor="#FFFFFF"
             android:text="날짜"
             android:layout_width="0dp"
@@ -26,15 +28,47 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/softBackgraound"/>
+            android:background="@color/colorAccent" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.7"
+        android:background="@color/softBackgraound"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:text="항목명"
+            android:textColor="@color/textColor"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
+        <TextView
+            android:text="가격"
+            android:textColor="@color/textColor"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
+        <TextView
+            android:text="수량"
+            android:textColor="@color/textColor"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"/>
     </LinearLayout>
 
     <ListView
         android:id="@+id/tx_item_list_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7">
+        android:layout_weight="7"
+        android:divider="@color/colorGray"
+        android:dividerHeight="1dp">
     </ListView>
 
     <LinearLayout
@@ -49,15 +83,22 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal">
-            <TextView
-                android:text="Total"
+            <Button
+                android:id="@+id/btn_total"
+                android:text="총 액"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center|left"
-                android:layout_marginLeft="20dp"/>
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorAccent"/>
             <TextView
+                android:id="@+id/tv_total"
                 android:text="0 원"
+                android:textColor="@color/textColor"
+                android:textSize="18dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -79,6 +120,7 @@
                 android:layout_marginRight="10dp"
                 android:background="@color/backgroundColor"/>
             <Button
+                android:id="@+id/btn_txn"
                 android:text="등록"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -48,8 +49,8 @@ public class ItemListActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(ItemListActivity.this, "매입", Toast.LENGTH_SHORT).show();
                 importButton.setBackgroundColor(Color.WHITE);
-                importButton.setTextColor(Color.parseColor("#6475bc"));
-                exportButton.setBackgroundColor(Color.parseColor("#6475bc"));
+                importButton.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.backgroundColor));
+                exportButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.backgroundColor));
                 exportButton.setTextColor(Color.WHITE);
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.item_container, importFragment)
@@ -63,8 +64,8 @@ public class ItemListActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(ItemListActivity.this, "매출", Toast.LENGTH_SHORT).show();
                 exportButton.setBackgroundColor(Color.WHITE);
-                exportButton.setTextColor(Color.parseColor("#6475bc"));
-                importButton.setBackgroundColor(Color.parseColor("#6475bc"));
+                exportButton.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.backgroundColor));
+                importButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.backgroundColor));
                 importButton.setTextColor(Color.WHITE);
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.item_container, exportFragment)

@@ -212,7 +212,6 @@ public class ImportFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String result) {
-            //Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
             list = gson.fromJson(result, new TypeToken<ArrayList<Item>>(){}.getType());
             adapter = new ItemAdapter(getActivity(), list);
             listView.setAdapter(adapter);
@@ -331,7 +330,6 @@ public class ImportFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String result) {
-            //Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
             if (result.equals("1")) {
                 new ItemListAsyncTask().execute("http://" + getString(R.string.server_ip) + ":8080/TodayMyStore/AndroidController?command=android_item_list", "import", userId);
                 progressDialog.dismiss();

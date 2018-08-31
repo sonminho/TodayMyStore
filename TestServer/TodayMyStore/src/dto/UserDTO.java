@@ -46,10 +46,10 @@ public class UserDTO {
 	public void setmPhone(String mPhone) {
 		this.mPhone = mPhone;
 	}
+	
 	@Override
 	public String toString() {
 		return "UserDTO [mId=" + mId + ", mPw=" + mPw + ", mName=" + mName + ", mEmail=" + mEmail + ", mPhone=" + mPhone
 				+ "]";
 	}
-	
 }

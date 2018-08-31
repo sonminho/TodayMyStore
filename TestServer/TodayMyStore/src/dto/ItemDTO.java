@@ -5,12 +5,8 @@ public class ItemDTO {
 	private String userId;
 	private String itemName;
 	private int unitPrice;
-	
-	@Override
-	public String toString() {
-		return "ItemDTO [itemType=" + itemType + ", userId=" + userId + ", itemName=" + itemName + ", unitPrice="
-				+ unitPrice + "]";
-	}
+	private int itemCount;
+	private int itemNameId;
 	
 	public String getItemType() {
 		return itemType;
@@ -36,5 +32,21 @@ public class ItemDTO {
 	public void setUnitPrice(int unitPrice) {
 		this.unitPrice = unitPrice;
 	}
-
+	public int getItemCount() {
+		return itemCount;
+	}
+	public void setItemCount(int itemCount) {
+		this.itemCount = itemCount;
+	}
+	public int getItemNameId() {
+		return itemNameId;
+	}
+	public void setItemNameId(int itemNameId) {
+		this.itemNameId = itemNameId;
+	}
+	@Override
+	public String toString() {
+		return "ItemDTO [itemType=" + itemType + ", userId=" + userId + ", itemName=" + itemName + ", unitPrice="
+				+ unitPrice + "]";
+	}
 }

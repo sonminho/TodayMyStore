@@ -1,0 +1,115 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import db.DBManager;
+import dto.ItemDTO;
+import dto.TxnsDTO;
+
+public class TxnsDAO {
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	public ArrayList<TxnsDTO> txnsCheck(String mId, String date) {
+		ArrayList<TxnsDTO> list = null;
+		
+		String sql = "SELECT MNAME_ID, ITEM_TYPE, TXN_DATE, ITEM_NAME_ID, ITEM_NAME, UNIT_PRICE, QUANTITY, AMOUNT FROM TXNS WHERE MNAME_ID = ? AND date(txn_date) = ?";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mId);
+			pstmt.setString(2, date);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				rs.beforeFirst();
+				
+				list = new ArrayList<TxnsDTO>();
+				
+				
+				while(rs.next()) {
+					TxnsDTO txn = new TxnsDTO();
+					txn.setMname_id(rs.getString(1));
+					txn.setItem_type(rs.getString(2));
+					txn.setTxn_date(rs.getString(3));
+					txn.setItem_name_id(rs.getInt(4));
+					txn.setItem_name(rs.getString(5));
+					txn.setUnit_price(rs.getInt(6));
+					txn.setQuantity(rs.getInt(7));
+					txn.setAmount(rs.getInt(8));
+					
+					list.add(txn);
+				}
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return list;
+	}
+	
+	public int txnInsert(ArrayList<ItemDTO> list, String date) {
+		int result = -1;
+		int listLen = list.size();
+		
+		String sql = "INSERT INTO TXNS(MNAME_ID, ITEM_TYPE, ITEM_NAME_ID, ITEM_NAME, UNIT_PRICE, QUANTITY, TXN_DATE)"
+				+ "VALUES(?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			for(int i = 0; i < listLen; i++) {
+				pstmt.setString(1, list.get(i).getUserId());
+				pstmt.setString(2, list.get(i).getItemType());
+				pstmt.setInt(3, list.get(i).getItemNameId());
+				pstmt.setString(4, list.get(i).getItemName());
+				pstmt.setInt(5, list.get(i).getUnitPrice());
+				pstmt.setInt(6, list.get(i).getItemCount());
+				pstmt.setString(7, date);
+				result = pstmt.executeUpdate();
+			}
+			
+		} catch(Exception e ) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+	}
+	
+	public int txnUpdate(ArrayList<TxnsDTO> list, String date) {
+		int result = -1;
+		int listLen = list.size();
+		
+		String sql = "UPDATE TXNS SET QUANTITY = ? WHERE ITEM_TYPE = ? AND DATE(TXN_DATE) = ? "
+				+ "AND ITEM_NAME_ID = ? AND ITEM_NAME = ?";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			for(int i = 0; i < listLen; i++) {
+				pstmt.setInt(1, list.get(i).getQuantity());
+				pstmt.setString(2, list.get(i).getItem_type());
+				pstmt.setString(3, date);
+				pstmt.setInt(4,  list.get(i).getItem_name_id());
+				pstmt.setString(5, list.get(i).getItem_name());
+				result = pstmt.executeUpdate();
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+	}
+}

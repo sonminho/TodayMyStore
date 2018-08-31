@@ -7,6 +7,7 @@ public class Item {
     private String unitPrice;
     private String userId;
     private String itemCount;
+    private String itemNameId;
 
     public Item() {
 
@@ -56,6 +57,14 @@ public class Item {
 
     public void setUnitPrice(String unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public String getItemNameId() {
+        return itemNameId;
+    }
+
+    public void setItemNameId(String itemNameId) {
+        this.itemNameId = itemNameId;
     }
 
     @Override

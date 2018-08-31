@@ -17,21 +17,24 @@ public class ItemDAO {
 		ArrayList<ItemDTO> list = new ArrayList<ItemDTO>();
 		
 		System.out.println("아이템 타입 : " + type + " + 요청 사용자 :" + userId);
-		String sql = "SELECT ITEM_NAME, UNIT_PRICE FROM ITEMS WHERE ITEM_TYPE = ? AND MNAME_ID = ? ORDER BY ITEM_NAME ASC";
+		String sql = "SELECT ITEM_NAME, UNIT_PRICE, ITEM_NAME_ID FROM ITEMS WHERE ITEM_TYPE = ? AND MNAME_ID = ? ORDER BY ITEM_NAME ASC";
 		
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, type);
 			pstmt.setString(2, userId);
+			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				ItemDTO item = new ItemDTO();
 				item.setItemName(rs.getString(1));
 				item.setUnitPrice(rs.getInt(2));
-				
-				System.out.println(item.getItemName() + " , " + item.getUnitPrice());
+				item.setItemNameId(Integer.valueOf(rs.getString(3)));
+				item.setItemType(type);
+				item.setUserId(userId);
+				System.out.println(item.getItemName() + " , " + item.getUnitPrice() + ", " + item.getItemNameId());
 				list.add(item);
 			}
 		} catch(Exception e){

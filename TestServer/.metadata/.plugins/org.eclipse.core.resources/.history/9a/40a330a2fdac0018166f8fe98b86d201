@@ -1,0 +1,12 @@
+package dto;
+
+public class TxnsDTO {
+	private String mname_id;
+	private String item_type;
+	private int item_name_id;
+	private String item_name;
+	private int unit_price;
+	private int quantity;
+	
+	
+}

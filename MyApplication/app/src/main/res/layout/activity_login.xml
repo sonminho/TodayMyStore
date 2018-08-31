@@ -9,21 +9,16 @@
     android:background="@color/backgroundColor"
     tools:context=".LoginActivity">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:textSize="30dp"
-        android:textAlignment="center"
-        android:gravity="center_vertical"
-        android:textStyle="normal"
-        android:textColor="#FFF"
-        android:text="오늘 우리 가게는"/>
+        android:layout_weight="1.3"
+        android:src="@drawable/login_img"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.8"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -39,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="5dp"/>
         <EditText
             android:id="@+id/et_login_password"
             android:drawableLeft="@drawable/img_lock"
@@ -53,14 +48,14 @@
             android:layout_marginTop="25dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="40dp"/>
+            android:layout_marginBottom="5dp"/>
     </LinearLayout>
 
     <LinearLayout
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.7"
         android:orientation="horizontal">
         <Button
             android:id="@+id/btn_login"

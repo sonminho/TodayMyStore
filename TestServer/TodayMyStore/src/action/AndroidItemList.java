@@ -29,10 +29,9 @@ public class AndroidItemList implements Action{
 		int listSize = list.size();
 		
 		for(int i = 0; i < listSize; i++) {
-			sb.append(list.get(i).getItemName() + "는 " + list.get(i).getUnitPrice() + "원\n");
+			System.out.println("아이템 리스트" + list.get(i).getUserId());
 		}
 		
-		// [{"itemName":"만두","unitPrice":1000},{"itemName":"소시지","unitPrice":2000}]
 		System.out.println(gson.toJson(list));
 		
 		response.getWriter().append(gson.toJson(list));

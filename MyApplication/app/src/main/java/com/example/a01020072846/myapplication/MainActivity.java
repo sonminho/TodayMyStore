@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         Button exportButton = (Button) findViewById(R.id.btn_export);
 
         id = intent.getStringExtra("id");
-        Toast.makeText(this, "사용자 아이디 " + id, Toast.LENGTH_SHORT).show();
 
         btnMyPage.setOnClickListener(new View.OnClickListener() {
             Intent updateIntent = null;
@@ -44,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 itemIntent = new Intent(MainActivity.this, ItemListActivity.class);
                 itemIntent.putExtra("id", id);
-                Toast.makeText(MainActivity.this, id, Toast.LENGTH_SHORT).show();
                 startActivity(itemIntent);
             }
         });
@@ -56,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 importIntent = new Intent(MainActivity.this, TransactionImportActivity.class);
                 importIntent.putExtra("id", id);
-                Toast.makeText(MainActivity.this, id, Toast.LENGTH_SHORT).show();
                 startActivity(importIntent);
             }
         });
@@ -68,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 exportIntent = new Intent(MainActivity.this, TransactionExportActivity.class);
                 exportIntent.putExtra("id", id);
-                Toast.makeText(MainActivity.this, id, Toast.LENGTH_SHORT).show();
                 startActivity(exportIntent);
             }
         });
