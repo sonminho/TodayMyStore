@@ -21,8 +21,8 @@
             android:textSize="20dp"
             android:textColor="@color/backgroundColor"
             android:background="@drawable/rounded"
-            android:drawableTop="@drawable/img_sold"
-            android:layout_margin="20dp"
+            android:drawableTop="@drawable/img_record"
+            android:layout_margin="30dp"
             android:layout_width="100dp"
             android:layout_height="140dp" />
         <Button
@@ -31,8 +31,37 @@
             android:textSize="20dp"
             android:textColor="@color/backgroundColor"
             android:background="@drawable/rounded"
+            android:drawableTop="@drawable/img_record"
+            android:layout_margin="30dp"
+            android:layout_width="100dp"
+            android:layout_height="140dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="5"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:text="내역"
+            android:textSize="20dp"
+            android:textColor="@color/backgroundColor"
+            android:background="@drawable/rounded"
             android:drawableTop="@drawable/img_sold"
-            android:layout_margin="20dp"
+            android:layout_margin="30dp"
+            android:layout_width="100dp"
+            android:layout_height="140dp" />
+
+        <Button
+            android:id="@+id/btn_item"
+            android:text="항목"
+            android:textSize="20dp"
+            android:textColor="@color/backgroundColor"
+            android:background="@drawable/rounded"
+            android:drawableTop="@drawable/img_item"
+            android:layout_margin="30dp"
             android:layout_width="100dp"
             android:layout_height="140dp" />
     </LinearLayout>
@@ -44,24 +73,24 @@
         android:layout_height="0dp"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/btn_item"
-            android:text="항목"
-            android:textSize="20dp"
-            android:textColor="@color/backgroundColor"
-            android:background="@drawable/rounded"
-            android:drawableTop="@drawable/img_item"
-            android:layout_margin="20dp"
-            android:layout_width="100dp"
-            android:layout_height="140dp" />
-
-        <Button
             android:id="@+id/btn_my_page"
             android:text="마이페이지"
             android:textSize="20dp"
             android:textColor="@color/backgroundColor"
             android:background="@drawable/rounded"
             android:drawableTop="@drawable/img_my_page"
-            android:layout_margin="20dp"
+            android:layout_margin="30dp"
+            android:layout_width="100dp"
+            android:layout_height="140dp" />
+
+        <Button
+            android:id="@+id/btn_log_out"
+            android:text="로그아웃"
+            android:textSize="20dp"
+            android:textColor="@color/backgroundColor"
+            android:background="@drawable/rounded"
+            android:drawableTop="@drawable/img_log_out"
+            android:layout_margin="30dp"
             android:layout_width="100dp"
             android:layout_height="140dp" />
     </LinearLayout>

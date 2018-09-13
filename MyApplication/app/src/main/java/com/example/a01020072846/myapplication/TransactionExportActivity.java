@@ -1,5 +1,6 @@
 package com.example.a01020072846.myapplication;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +20,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.StringTokenizer;
 
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -33,8 +36,10 @@ public class TransactionExportActivity extends AppCompatActivity {
     String userId = null;
     ProgressDialog progressDialog = null;
     TextView tvDate = null, tvTotal = null;
-    Button totalBtn = null, txnBtn, cancelBtn;
+    Button totalBtn = null, txnBtn, cancelBtn, dateBtn;
+    DatePickerDialog dialog;
     String date = null;
+    int year, month, day;
     private int type;
 
     @Override
@@ -50,6 +55,7 @@ public class TransactionExportActivity extends AppCompatActivity {
         totalBtn = (Button) findViewById(R.id.btn_total);
         txnBtn = (Button) findViewById(R.id.btn_txn);
         cancelBtn = (Button) findViewById(R.id.btn_cancel);
+        dateBtn = (Button) findViewById(R.id.btn_date);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -59,6 +65,26 @@ public class TransactionExportActivity extends AppCompatActivity {
 
         userId = intent.getStringExtra("id");
 
+        Date dateNow = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        date = sdf.format(dateNow);
+        StringTokenizer stk = new StringTokenizer(date, "-");
+        year = Integer.valueOf(stk.nextToken());
+        month = Integer.valueOf(stk.nextToken());
+        day = Integer.valueOf(stk.nextToken());
+        tvDate.setText(year + "년 " + month + "월 " + day + "일");
+
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                tvDate.setText(year + "년 " + (month+1) + "월 " + dayOfMonth + "일");
+                date = year + "-" + (month+1) + "-" + dayOfMonth;
+                new TxnCheckAsyncTask().execute("http://"+ getString(R.string.server_ip) +":8080/TodayMyStore/AndroidController?command=android_txn_check",  userId, year + "-" + (month+1) + "-" + dayOfMonth);
+            }
+        };
+
+        dialog = new DatePickerDialog(this, dateSetListener, year, month-1, day);
+
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,11 +92,13 @@ public class TransactionExportActivity extends AppCompatActivity {
             }
         });
 
-        Date dateNow = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        date = sdf.format(dateNow);
+        dateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.show();
+            }
+        });
 
-        tvDate.setText(date);
 
         new TxnCheckAsyncTask().execute("http://"+ getString(R.string.server_ip) +":8080/TodayMyStore/AndroidController?command=android_txn_check",  userId, date);
 
@@ -159,7 +187,6 @@ public class TransactionExportActivity extends AppCompatActivity {
                 adapter = new TrasactionAdapter(getApplicationContext(), null, txnList, 1);
                 listView.setAdapter(adapter);
                 tvTotal.setText(adapter.txnTotalCalc() + " 원");
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             }
             progressDialog.dismiss();
         }
