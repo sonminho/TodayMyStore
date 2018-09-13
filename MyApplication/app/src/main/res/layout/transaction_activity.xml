@@ -112,6 +112,7 @@
             android:layout_weight="1">
 
             <Button
+                android:id="@+id/btn_cancel"
                 android:text="취소"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

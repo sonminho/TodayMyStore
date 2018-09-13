@@ -33,7 +33,7 @@ public class TransactionImportActivity extends AppCompatActivity {
     String userId = null;
     ProgressDialog progressDialog = null;
     TextView tvDate = null, tvTotal = null;
-    Button totalBtn = null, txnBtn;
+    Button totalBtn = null, txnBtn, cancelBtn;
     String date = null;
     private int type;
 
@@ -49,6 +49,7 @@ public class TransactionImportActivity extends AppCompatActivity {
         tvTotal = (TextView) findViewById(R.id.tv_total);
         totalBtn = (Button) findViewById(R.id.btn_total);
         txnBtn = (Button) findViewById(R.id.btn_txn);
+        cancelBtn = (Button) findViewById(R.id.btn_cancel);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -58,8 +59,13 @@ public class TransactionImportActivity extends AppCompatActivity {
 
         userId = intent.getStringExtra("id");
 
-        /*itemList = new ArrayList<Item>();
-        txnList = new ArrayList<Txn>();*/
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         Date dateNow = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
