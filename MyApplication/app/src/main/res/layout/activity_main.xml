@@ -45,6 +45,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btn_summary"
             android:text="내역"
             android:textSize="20dp"
             android:textColor="@color/backgroundColor"

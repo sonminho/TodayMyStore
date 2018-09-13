@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnMyPage = (Button) findViewById(R.id.btn_my_page);
         Button importButton = (Button) findViewById(R.id.btn_import);
         Button exportButton = (Button) findViewById(R.id.btn_export);
+        Button summaryButton = (Button) findViewById(R.id.btn_summary);
 
         id = intent.getStringExtra("id");
 
@@ -66,6 +67,16 @@ public class MainActivity extends AppCompatActivity {
                 exportIntent = new Intent(MainActivity.this, TransactionExportActivity.class);
                 exportIntent.putExtra("id", id);
                 startActivity(exportIntent);
+            }
+        });
+
+        summaryButton.setOnClickListener(new View.OnClickListener() {
+            Intent summaryIntent = null;
+            @Override
+            public void onClick(View v) {
+                summaryIntent = new Intent(MainActivity.this, SummaryActivity.class);
+                summaryIntent.putExtra("id", id);
+                startActivity(summaryIntent);
             }
         });
     }

@@ -32,7 +32,8 @@
             -->
         </activity>
         <activity android:name=".TransactionImportActivity" />
-        <activity android:name=".TransactionExportActivity"></activity>
+        <activity android:name=".TransactionExportActivity" />
+        <activity android:name=".SummaryActivity"></activity>
     </application>
 
 </manifest>
