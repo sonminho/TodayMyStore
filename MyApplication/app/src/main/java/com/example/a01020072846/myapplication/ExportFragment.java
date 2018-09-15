@@ -55,8 +55,7 @@ public class ExportFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog = new ProgressDialog(mContext, R.style.StyledDialog);
         progressDialog.setMessage("잠시만 기다려주세요");
         progressDialog.setCancelable(false);
 

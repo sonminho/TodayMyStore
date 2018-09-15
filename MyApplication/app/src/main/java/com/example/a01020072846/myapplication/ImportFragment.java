@@ -55,8 +55,7 @@ public class ImportFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog = new ProgressDialog(mContext, R.style.StyledDialog);
         progressDialog.setMessage("잠시만 기다려주세요");
         progressDialog.setCancelable(false);
 
@@ -80,14 +79,6 @@ public class ImportFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dialog.show();
-
-                /*
-                int count = 0 ; count = adapter.getCount() ;
-
-                for (int i=0; i<count; i++) {
-                    listView.setItemChecked(i, true) ;
-                }
-                */
             }
         });
 
@@ -110,13 +101,6 @@ public class ImportFragment extends Fragment {
                 }
 
                 new ItemRemoveAsyncTask().execute("http://"+ getString(R.string.server_ip) +":8080/TodayMyStore/AndroidController?command=android_remove_item", "import", userId);
-                /*for(int i = count-1; i >= 0; i--) {
-                    if(checkedItems.get(i))
-                        list.remove(i);
-                }
-
-                listView.clearChoices();
-                adapter.notifyDataSetChanged();*/
             }
         });
         return rootView;

@@ -47,7 +47,6 @@ public class ItemListActivity extends AppCompatActivity {
         importButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ItemListActivity.this, "매입", Toast.LENGTH_SHORT).show();
                 importButton.setBackgroundColor(Color.WHITE);
                 importButton.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.backgroundColor));
                 exportButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.backgroundColor));
@@ -62,7 +61,6 @@ public class ItemListActivity extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
-                Toast.makeText(ItemListActivity.this, "매출", Toast.LENGTH_SHORT).show();
                 exportButton.setBackgroundColor(Color.WHITE);
                 exportButton.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.backgroundColor));
                 importButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.backgroundColor));

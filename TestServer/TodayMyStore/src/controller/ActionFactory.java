@@ -10,6 +10,7 @@ import action.AndroidLogin;
 import action.AndroidRemoveItem;
 import action.AndroidTxnCheck;
 import action.AndroidTxnInsert;
+import action.AndroidTxnTrend;
 import action.AndroidTxnUpdate;
 import action.AndroidUserInfo;
 
@@ -52,6 +53,8 @@ public class ActionFactory { // 싱글턴 디자인
 			action = new AndroidTxnInsert();
 		} else if(command.equals("android_txn_update")) {
 			action = new AndroidTxnUpdate();
+		} else if(command.equals("android_txn_trend")) {
+			action = new AndroidTxnTrend();
 		}
 		
 		return action;

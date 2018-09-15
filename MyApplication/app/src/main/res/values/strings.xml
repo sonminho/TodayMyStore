@@ -2,6 +2,4 @@
     <string name="app_name">오늘 우리 가게는</string>
     <string name="server_ip">192.168.0.155</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -36,8 +36,7 @@ public class JoinActivity extends AppCompatActivity {
 
         loginIntent = new Intent(this, LoginActivity.class);
 
-        dialog = new ProgressDialog(this);
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog = new ProgressDialog(this, R.style.StyledDialog);
         dialog.setMessage("잠시만 기다려주세요");
         dialog.setCancelable(false);
 

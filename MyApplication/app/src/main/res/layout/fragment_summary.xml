@@ -16,25 +16,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="65dp"
                 android:orientation="horizontal">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <com.github.mikephil.charting.charts.LineChart
                 android:layout_width="match_parent"
-                android:layout_height="450dp"
+                android:layout_height="600dp"
                 android:id="@+id/chart1">
             </com.github.mikephil.charting.charts.LineChart>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="400dp"/>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

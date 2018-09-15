@@ -35,8 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        dialog = new ProgressDialog(this);
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog = new ProgressDialog(this, R.style.StyledDialog);
         dialog.setMessage("잠시만 기다려주세요");
 
         loginIntent = new Intent(this, MainActivity.class);

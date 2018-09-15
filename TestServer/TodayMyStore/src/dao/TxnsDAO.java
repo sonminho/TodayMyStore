@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import db.DBManager;
 import dto.ItemDTO;
+import dto.TrendDTO;
 import dto.TxnsDTO;
 
 public class TxnsDAO {
@@ -18,7 +19,7 @@ public class TxnsDAO {
 		ArrayList<TxnsDTO> list = null;
 		
 		String sql = "SELECT MNAME_ID, ITEM_TYPE, TXN_DATE, ITEM_NAME_ID, ITEM_NAME, UNIT_PRICE, QUANTITY, AMOUNT FROM TXNS WHERE MNAME_ID = ? AND date(txn_date) = ?"
-				+ "AND ITEM_TYPE = ?";
+				+ "AND ITEM_TYPE = ? ORDER BY ITEM_NAME ASC";
 		
 		try {
 			conn = DBManager.getConnection();
@@ -113,5 +114,35 @@ public class TxnsDAO {
 			DBManager.close(conn, pstmt);
 		}
 		return result;
+	}
+	
+	public ArrayList<TrendDTO> txnTrend(String userId, String itemType, String startDate, String endDate) {
+		ArrayList<TrendDTO> list = new ArrayList<>();
+		
+		String sql = "select item_name, sum(quantity) from txns where mname_id = ? and item_type = ? and date(txn_date) between ? and ? group by item_name";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			pstmt.setString(2, itemType);
+			pstmt.setString(3, startDate);
+			pstmt.setString(4, endDate);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				TrendDTO trend = new TrendDTO();
+				trend.setItemName(rs.getString(1));
+				trend.setSumQuantity(rs.getInt(2));
+				list.add(trend);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return list;
 	}
 }

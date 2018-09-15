@@ -1,0 +1,6 @@
+package dto;
+
+public class TrendDTO {
+	private String userId;
+	
+}

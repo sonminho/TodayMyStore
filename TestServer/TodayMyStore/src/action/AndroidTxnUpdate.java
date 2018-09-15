@@ -20,7 +20,7 @@ public class AndroidTxnUpdate implements Action{
 		Gson gson = new Gson();
 		
 		ArrayList<TxnsDTO> list = gson.fromJson(request.getParameter("txnList"), new TypeToken<ArrayList<TxnsDTO>>(){}.getType());
-		System.out.println("ssssssssssssssssss");
+		
 		String userId = request.getParameter("userId");
 		
 		String type = request.getParameter("type");

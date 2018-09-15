@@ -34,6 +34,11 @@ public class SummaryPagerAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return position+"번째";
+        if(position == 0)
+            return "매출 동향";
+        else if(position == 1)
+            return "종합";
+        else
+            return position+"번째";
     }
 }

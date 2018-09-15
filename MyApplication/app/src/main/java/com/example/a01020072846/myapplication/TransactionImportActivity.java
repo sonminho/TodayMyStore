@@ -58,8 +58,7 @@ public class TransactionImportActivity extends AppCompatActivity {
         dateBtn = (Button) findViewById(R.id.btn_date);
 
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog =  new ProgressDialog(this, R.style.StyledDialog);
         progressDialog.setMessage("잠시만 기다려주세요");
 
         Intent intent = getIntent();
