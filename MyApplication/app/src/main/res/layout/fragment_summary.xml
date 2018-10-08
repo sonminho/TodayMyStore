@@ -9,21 +9,79 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_start_day"
+                    android:text="START DAy"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorAccent"/>
+                <Button
+                    android:id="@+id/btn_end_day"
+                    android:text="END DAY"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorAccent"/>
             </LinearLayout>
-
+            <TextView
+                android:layout_marginTop="15dp"
+                android:textColor="@color/colorAccent"
+                android:text="매출 차트입니다."
+                android:textSize="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
             <com.github.mikephil.charting.charts.LineChart
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
-                android:id="@+id/chart1">
+                android:id="@+id/totalChart">
+            </com.github.mikephil.charting.charts.LineChart>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp"/>
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="60dp"
+                android:textColor="@color/colorAccent"
+                android:text="매입 차트입니다."
+                android:textSize="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
+            <com.github.mikephil.charting.charts.LineChart
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:id="@+id/totalChart2">
+            </com.github.mikephil.charting.charts.LineChart>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp"/>
+            <TextView
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/colorAccent"
+                android:text="순이익 차트입니다."
+                android:textSize="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
+            <com.github.mikephil.charting.charts.LineChart
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:id="@+id/totalChart3">
             </com.github.mikephil.charting.charts.LineChart>
         </LinearLayout>
     </ScrollView>

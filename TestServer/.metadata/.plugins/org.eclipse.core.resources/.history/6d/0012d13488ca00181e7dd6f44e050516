@@ -1,0 +1,37 @@
+package action;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
+import dao.TxnsDAO;
+import dto.SummaryDTO;
+
+public class AndroidSummary implements Action{
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Gson gson = new Gson();
+		
+		SummaryDTO summary = gson.fromJson(request.getParameter("summary"), SummaryDTO.class);
+		
+		TxnsDAO tDao = new TxnsDAO();
+		
+		ArrayList<SummaryDTO> list = tDao.summarySales(summary.getUserId(), summary.getItemType(), summary.getStartDate(), summary.getEndDate());
+		
+		JsonElement jsonElement = gson.toJsonTree(list);
+		JsonObject jsonObject = new JsonObject();
+		
+		jsonObject.add("importList", jsonElement);
+		
+		response.getWriter().append(jsonObject.toString());
+	}
+
+}

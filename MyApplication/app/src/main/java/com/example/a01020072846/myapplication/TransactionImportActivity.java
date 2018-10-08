@@ -346,7 +346,6 @@ public class TransactionImportActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             itemList = gson.fromJson(result, new TypeToken<ArrayList<Item>>(){}.getType());
             adapter = new TrasactionAdapter(getApplicationContext(), itemList, null, 0);
 

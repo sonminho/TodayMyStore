@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     String id;
@@ -32,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 updateIntent = new Intent(MainActivity.this, InfoUpdateActivity.class);
                 updateIntent.putExtra("id", id);
-                Toast.makeText(MainActivity.this, id, Toast.LENGTH_SHORT).show();
                 startActivity(updateIntent);
             }
         });

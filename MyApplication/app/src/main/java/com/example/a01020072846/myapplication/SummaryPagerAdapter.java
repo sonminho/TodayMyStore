@@ -18,7 +18,7 @@ public class SummaryPagerAdapter extends FragmentPagerAdapter {
 
         list = new ArrayList<Fragment>();
         list.add(new SalesTrendFragment(userId));
-        list.add(new SummaryFragment());
+        list.add(new SummaryFragment(userId));
     }
 
     @Override

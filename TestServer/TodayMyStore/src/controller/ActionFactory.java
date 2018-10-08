@@ -8,6 +8,7 @@ import action.AndroidItemList;
 import action.AndroidJoin;
 import action.AndroidLogin;
 import action.AndroidRemoveItem;
+import action.AndroidSummary;
 import action.AndroidTxnCheck;
 import action.AndroidTxnInsert;
 import action.AndroidTxnTrend;
@@ -55,6 +56,8 @@ public class ActionFactory { // 싱글턴 디자인
 			action = new AndroidTxnUpdate();
 		} else if(command.equals("android_txn_trend")) {
 			action = new AndroidTxnTrend();
+		} else if(command.equals("android_summary")) {
+			action = new AndroidSummary();
 		}
 		
 		return action;

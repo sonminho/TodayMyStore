@@ -1,0 +1,84 @@
+package action;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
+import dao.TxnsDAO;
+import dto.SummaryDTO;
+
+public class AndroidSummary implements Action{
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Gson gson = new Gson();
+		
+		SummaryDTO summary = gson.fromJson(request.getParameter("summary"), SummaryDTO.class);
+		
+		TxnsDAO tDao = new TxnsDAO();
+		
+		ArrayList<SummaryDTO> list = tDao.summarySales(summary.getUserId(), "export", summary.getStartDate(), summary.getEndDate());
+		ArrayList<SummaryDTO> list2 = tDao.summarySales(summary.getUserId(), "import", summary.getStartDate(), summary.getEndDate());
+		ArrayList<SummaryDTO> list3 = new ArrayList<>();
+		ArrayList<SummaryDTO> list4 = new ArrayList<>();
+		
+		JsonElement jsonElement = gson.toJsonTree(list);
+		JsonElement jsonElement2 = gson.toJsonTree(list2);
+		JsonObject jsonObject = new JsonObject();
+		
+		jsonObject.add("exportList", jsonElement);
+		jsonObject.add("importList", jsonElement2);
+		
+		System.out.println("매출 ");
+		for(SummaryDTO s : list) {
+			System.out.println(s.getDate() + " " + s.getTotal());
+			list3.add(s);
+		}
+		
+		System.out.println("매입");
+		int idx = 0;
+		for(SummaryDTO s : list3) {
+			for(SummaryDTO s2 : list2) {
+				if(s.getDate().compareTo(s2.getDate()) == 0) {
+					s.setTotal(s.getTotal() + s.getTotal());
+				} else if(s.getDate().compareTo(s2.getDate()) < 0) {
+					break;
+				} else {
+					
+				}
+			}
+		}
+		
+		for(SummaryDTO s1 : list2) {
+			System.out.println(s1.getDate() + " " + s1.getTotal());
+			if(list3.get(idx).getDate().equals(s1.getDate())) {
+				list3.get(idx).setTotal(list.get(idx).getTotal() + s1.getTotal());
+			}
+			list3.add(new SummaryDTO(s1.getDate(), -1*s1.getTotal()));
+		}
+		
+		System.out.println("순이익");
+		Collections.sort(list3, new Comparator<SummaryDTO>(){
+			@Override
+			public int compare(SummaryDTO o1, SummaryDTO o2) {
+				return o1.getDate().compareTo(o2.getDate());
+			}
+		});
+		for(SummaryDTO s : list3) {
+			System.out.println(s.getDate() + " " + s.getTotal());
+		}
+		
+		response.getWriter().append(jsonObject.toString());
+	}
+
+}

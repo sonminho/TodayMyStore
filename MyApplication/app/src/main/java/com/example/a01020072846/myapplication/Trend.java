@@ -7,7 +7,14 @@ public class Trend {
     private String endDate;
     private int sumQuantity;
     private String itemName;
+    private int total;
 
+    public int getTotal() {
+        return total;
+    }
+    public void setTotal(int total) {
+        this.total = total;
+    }
     public String getUserId() {
         return userId;
     }

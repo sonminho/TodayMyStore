@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -27,6 +28,8 @@ import com.google.gson.reflect.TypeToken;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -37,32 +40,24 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 @SuppressLint("ValidFragment")
 public class SalesTrendFragment extends Fragment {
     PieChart pieChart;
     Button btnStartDay, btnEndDay;
     DatePickerDialog startPicker, endPicker;
     ProgressDialog progressDialog;
+    TextView mostProductTv;
+
     ArrayList<Trend> list;
     SimpleDateFormat sdf;
-
     String userId;
     String date, startDate, endDate;
     Date startDateTime, endDateTime;
     int year, month, day;
 
-
-    private String[] monthNames = {"a", "b", "c", "d", "e"};
-    private float[] rainfall = {25.3f, 10.6f, 66.78f, 44.32f, 23.9f};
-
-
     public SalesTrendFragment(String userId) {
         this.userId = userId;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,6 +67,7 @@ public class SalesTrendFragment extends Fragment {
         pieChart = (PieChart) view.findViewById(R.id.piechart);
         btnStartDay = (Button) view.findViewById(R.id.btn_start_day);
         btnEndDay = (Button) view.findViewById(R.id.btn_end_day);
+        mostProductTv = (TextView) view.findViewById(R.id.tv_most_product);
 
         progressDialog = new ProgressDialog(getActivity(), R.style.StyledDialog);
         progressDialog.setMessage("잠시만 기다려주세요");
@@ -122,7 +118,6 @@ public class SalesTrendFragment extends Fragment {
                     btnStartDay.setText(startDate);
                     new TrendAsyncTask().execute("http://"+ getString(R.string.server_ip) +":8080/TodayMyStore/AndroidController?command=android_txn_trend", userId, "export", startDate, endDate);
                 }
-
             }
         }, year, month - 1, day);
 
@@ -168,8 +163,6 @@ public class SalesTrendFragment extends Fragment {
                 endPicker.show();
             }
         });
-
-        //setPieChart();
 
         return view;
     }
@@ -258,7 +251,23 @@ public class SalesTrendFragment extends Fragment {
 
             if(list.size() == 0) {
                 Toast.makeText(getActivity(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
+            } else {
+                //Toast.makeText(getActivity(), result, Toast.LENGTH_LONG).show();
+                Collections.sort(list, new Comparator<Trend>() {
+                    @Override
+                    public int compare(Trend o1, Trend o2) {
+                        if(o1.getSumQuantity() > o2.getSumQuantity())
+                            return -1;
+                        else if(o1.getSumQuantity() == o2.getSumQuantity())
+                            return 0;
+                        else
+                            return 1;
+                    }
+                });
+
+                mostProductTv.setText("가장 많이 팔린 제품은 " + list.get(0).getItemName() + "입니다.");
             }
+
             setPieChart(list);
             progressDialog.dismiss();
         }

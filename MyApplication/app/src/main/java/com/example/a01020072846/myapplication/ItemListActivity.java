@@ -29,7 +29,6 @@ public class ItemListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
 
-        Toast.makeText(this, "사용자 아이디는 " + id, Toast.LENGTH_SHORT).show();
         importFragment = new ImportFragment(this, id);
         exportFragment = new ExportFragment(this, id);
 

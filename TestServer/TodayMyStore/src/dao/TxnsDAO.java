@@ -3,10 +3,13 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import db.DBManager;
 import dto.ItemDTO;
+import dto.SummaryDTO;
 import dto.TrendDTO;
 import dto.TxnsDTO;
 
@@ -18,7 +21,8 @@ public class TxnsDAO {
 	public ArrayList<TxnsDTO> txnsCheck(String mId, String date, String type) {
 		ArrayList<TxnsDTO> list = null;
 		
-		String sql = "SELECT MNAME_ID, ITEM_TYPE, TXN_DATE, ITEM_NAME_ID, ITEM_NAME, UNIT_PRICE, QUANTITY, AMOUNT FROM TXNS WHERE MNAME_ID = ? AND date(txn_date) = ?"
+		String sql = "SELECT MNAME_ID, ITEM_TYPE, TXN_DATE, ITEM_NAME_ID, ITEM_NAME, "
+				+ "UNIT_PRICE, QUANTITY, AMOUNT FROM TXNS WHERE MNAME_ID = ? AND date(txn_date) = ?"
 				+ "AND ITEM_TYPE = ? ORDER BY ITEM_NAME ASC";
 		
 		try {
@@ -141,6 +145,39 @@ public class TxnsDAO {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return list;
+	}
+	
+	public ArrayList<SummaryDTO> summarySales(String userId, String itemType, String startDate, String endDate) {
+		ArrayList<SummaryDTO> list = new ArrayList<>();
+		
+		String sql = "select txn_date, sum(unit_price * quantity) from txns where mname_id = ? and item_type = ? and date(txn_date) "
+				+ "between ? and ? group by txn_date order by txn_date asc";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userId);
+			pstmt.setString(2, itemType);
+			pstmt.setString(3, startDate);
+			pstmt.setString(4, endDate);
+			rs = pstmt.executeQuery();
+			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd");
+		
+			while(rs.next()) {
+				SummaryDTO summary = new SummaryDTO();
+				
+				Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(rs.getString(1));
+				
+				summary.setDate(sdf.format(date));
+				summary.setTotal(rs.getInt(2));
+				list.add(summary);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
 		
 		return list;

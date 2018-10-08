@@ -1,0 +1,6 @@
+package dto;
+
+public class SummaryDTO {
+	private String date;
+	private int total;
+}

@@ -39,7 +39,7 @@ public class SummaryActivity extends AppCompatActivity {
             }
         });
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        SummaryPagerAdapter adapter = new SummaryPagerAdapter(getSupportFragmentManager(), "abcdd");
+        SummaryPagerAdapter adapter = new SummaryPagerAdapter(getSupportFragmentManager(), getIntent().getStringExtra("id"));
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab);

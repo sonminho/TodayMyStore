@@ -61,7 +61,6 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Toast.makeText(LoginActivity.this,  "id : " + id + "\npw : " + pw, Toast.LENGTH_SHORT).show();
 
                 new LoginAsyncTask().execute("http://"+ getString(R.string.server_ip) +":8080/TodayMyStore/AndroidController?command=android_login", id, pw);
             }

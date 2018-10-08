@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -237,7 +236,6 @@ public class TransactionExportActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             if(result.equals("1")) {
-                Toast.makeText(getApplicationContext(), "성공", Toast.LENGTH_SHORT).show();
                 new TxnCheckAsyncTask().execute("http://"+ getString(R.string.server_ip) +":8080/TodayMyStore/AndroidController?command=android_txn_check",  userId, date);
             }
             progressDialog.dismiss();
@@ -289,7 +287,6 @@ public class TransactionExportActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             if(result.equals("1")) {
-                Toast.makeText(getApplicationContext(), "성공", Toast.LENGTH_SHORT).show();
                 new TxnCheckAsyncTask().execute("http://"+ getString(R.string.server_ip) +":8080/TodayMyStore/AndroidController?command=android_txn_check",  userId, date);
             }
             progressDialog.dismiss();
@@ -345,7 +342,6 @@ public class TransactionExportActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             itemList = gson.fromJson(result, new TypeToken<ArrayList<Item>>(){}.getType());
             adapter = new TrasactionAdapter(getApplicationContext(), itemList, null, 0);
 
